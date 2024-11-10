@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Open-LLM-VTuber Installation Guide
@@ -149,11 +149,9 @@ So this is LLM.
 
 ## Step 5: Setup ASR (Automatic Speech Recognition)
 
-Supported options include FunASR, Faster-Whisper, Groq, and many more. See [Speech Recognition](speech-recognition.md) for detailed setup instructions of different ASR providers.
+Supported options include FunASR, Faster-Whisper, Groq, and many more. See [Speech Recognition](../ASR) for detailed setup instructions of different ASR providers.
 
 Local options like FunASR with SenseVoiceSmall and Faster-Whisper offers good speed and accuracy. Groq API offers generous free limits.
-
-Set `ASR_MODEL` in `conf.yaml` to your chosen ASR.
 
 :::warning
 Make sure your audio input device (a.k.a. your microphone) is configured properly in your browser. Use [this website](https://www.vad.ricky0123.com/) to check if your mic is working as expected.
@@ -163,9 +161,26 @@ Make sure your audio input device (a.k.a. your microphone) is configured properl
 Enable microphone permission for your terminal emulator to allow speech recognition access to your microphone.
 ::: 
 
+This project supports a number of speech recognition. Check out the ASR section for installation instructions. 
+
+In general, here are the steps to set up a speech recognition:
+
+1. Install the dependencies
+2. Edit the configurations of the ASR you use in `conf.yaml`. You can usually change the language or model there if supported.
+3. Set `ASR_MODEL` to the ASR of your choice.
+
+As of writing, this project supports the following ASR:
+
+- [FunASR](https://github.com/modelscope/FunASR), which support [SenseVoiceSmall](https://github.com/FunAudioLLM/SenseVoice) and some other models. (~~Local~~ Currently requires an internet connection for loading. Compute locally)
+- [Faster-Whisper](https://github.com/SYSTRAN/faster-whisper) (Local)
+- [Whisper-CPP](https://github.com/ggerganov/whisper.cpp) using the python binding [pywhispercpp](https://github.com/abdeladim-s/pywhispercpp) (Local, mac GPU acceleration can be configured)
+- [Whisper](https://github.com/openai/whisper) (local)
+- [Azure Speech Recognition](https://azure.microsoft.com/en-us/products/ai-services/speech-to-text) (API Key required)
+
+
 ## Step 6: Setup TTS
 
-See [Text to Speech](./features/text-to-speech.md) for detailed setup instructions. Supported options include py3-tts, Bark, CosyVoice, MeloTTS, Edge TTS, and Azure Text-to-Speech.
+See [Text to Speech](../TTS) for detailed setup instructions. Supported options include py3-tts, Bark, CosyVoice, MeloTTS, Edge TTS, and Azure Text-to-Speech.
 
 Set `TTS_MODEL` in `conf.yaml` to your chosen TTS.
 
